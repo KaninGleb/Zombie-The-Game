@@ -1,0 +1,57 @@
+body {
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(53, 2, 2, 0.981);
+    padding: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+button {
+    width: 135px;
+    padding: 10px 25px;
+    background-color: rgba(53, 2, 2, 0.981);
+    border: 2px solid white;
+    border-radius: 5px;
+    color: white
+}
+
+.game-panel {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    color: white;
+
+    border: 2px solid white;
+    /* Рамка для отображения границ элементов */
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 800px;
+    border-radius: 10px;
+    margin: 50px auto;
+    background-image: url("images/wall.jpg");
+    background-size: 100%;
+    background-position-y: -255px;
+    box-shadow: 0 0 50px 30px rgba(0, 0, 0, 0.5);
+    cursor: url("images/aim.svg"), pointer;
+}
+
+.item {
+    box-sizing: border-box;
+    /* Учитывать padding и border в расчетах ширины */
+
+    width: 120px;
+    height: 120px;
+    margin: 10px 20px;
+    /* border-radius: 50%; */
+    /* border: 2px solid white; */
+    /* Рамка для отображения границ элементов */
+}
+
+img {
+    width: 100%;
+    height: 100%;
+}
