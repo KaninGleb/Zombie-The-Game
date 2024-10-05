@@ -118,6 +118,8 @@
         zombieImg.src = "images/zombie.png"
 
         const bu = document.getElementById("sound-bu")
+        bu.volume = 0.03;
+
         const soundBtn = document.getElementById("sound-btn")
 
         const startBtn = document.getElementById("start-btn")
@@ -126,6 +128,7 @@
         hitImg.src = "images/blood.png"
 
         const shot = document.getElementById("sound-shot")
+        shot.volume = 0.03;
 
         const hitCounter = document.getElementById("hit-counter")
 
@@ -170,6 +173,31 @@
             }
         }
 
+        let canShoot = true; // Переменная для отслеживания возможности выстрела
+
+        items.forEach(item => {
+            item.onclick = () => {
+                if (!canShoot) return; // Если выстрелить нельзя, выходим из функции
+
+                shot.currentTime = 0; // Сбрасываем время
+                shot.play(); // Играем звук выстрела
+                canShoot = false; // Запрещаем дальнейшие выстрелы
+
+                if (item === items[randomIndex]) {
+                    // Если кликнули на зомби, ничего не делаем
+                    hit = true;
+                    return;
+                }
+
+                // Если кликнули не на зомби, увеличиваем счетчик пропусков
+                missCounter.innerText++;
+
+                // Устанавливаем задержку перед тем, как разрешить следующий выстрел
+                setTimeout(() => {
+                    canShoot = true; // Разрешаем выстрелы снова
+                }, 1000);
+            };
+        });
 
         //game
         function playGame() {
@@ -187,7 +215,6 @@
                 hitImg.remove()
             }, 1500)
         }
-
     </script>
 </body>
 
